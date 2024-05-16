@@ -5,7 +5,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -16,14 +15,15 @@ import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+
 public class DriversConfiguration {
     private static final String PROPERTIES_PATH = "/Users/artemiy/Desktop/ITMO/3rd_Year/2nd_sem/TPO/lab3/src/main/java/ru/artemiy/configuration/auto-testing.properties";
     public static final String CHROME_SYSTEM_PROPERTY_NAME = "webdriver.chrome.driver";
     public static final String CHROME_SYSTEM_PROPERTY_PATH = "/Users/artemiy/Desktop/ITMO/3rd_Year/2nd_sem/TPO/lab3/src/main/java/ru/artemiy/configuration/chromedriver";
     public static final String BASE_URL = "https://www.tumblr.com";
-    public static final String CORRECT_EMAIL = "$NORM_EMAIL";
-    public static final String CORRECT_PASSWORD = "dyrpen-qaPhu2-gyvwes"; // нет, не крадите мой пароль :(
-    public static final String WRONG_PASSWORD = "dyrpen-qaPhu2";
+    public static final String CORRECT_EMAIL = "***";
+    public static final String CORRECT_PASSWORD ="dyrpen-qaPhu2-gyvwes" ;
+//    public static final String WRONG_PASSWORD = "dyrpen-qaPhu2";
 
 
     public static void prepareDrivers() {
@@ -64,8 +64,4 @@ public class DriversConfiguration {
         return drivers;
     }
 
-    private static void switchOnNewWindow(WebDriver driver) {
-        List<String> windowsIds = driver.getWindowHandles().stream().toList();
-        driver.switchTo().window(windowsIds.get(windowsIds.size() - 1));
-    }
 }
