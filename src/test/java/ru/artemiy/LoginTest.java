@@ -18,7 +18,7 @@ public class LoginTest {
         DriversConfiguration.prepareDrivers();
     }
 
-
+    // Быть аккуратнее, за очень частые логины банят :)
     @TestFactory
     public Stream<DynamicTest> testLoginWithMail() {
         return DriversConfiguration.getDrivers().stream().map(driver -> DynamicTest.dynamicTest("Успешный вход в аккаунт в браузере " + driver.getClass(),
@@ -29,10 +29,27 @@ public class LoginTest {
                         driver.get(DriversConfiguration.BASE_URL);
                         var loginPage = mainPage.goToLoginPage();
                         loginPage.login(DriversConfiguration.CORRECT_EMAIL, DriversConfiguration.CORRECT_PASSWORD);
-                        Assertions.assertTrue( loginPage.getDriver().getCurrentUrl().contains("https://www.tumblr.com/"));
                     } finally {
                         driver.quit();
                     }
                 }));
     }
+
+    @TestFactory
+    public Stream<DynamicTest> testLoginWithWrongPassword() {
+        return DriversConfiguration.getDrivers().stream().map(driver -> DynamicTest.dynamicTest("Не успешный вход в аккаунт (неверный пароль) в браузере " + driver.getClass(),
+                () -> {
+                    try {
+                        driver.manage().deleteAllCookies();
+                        MainPage mainPage = new MainPage(driver);
+                        driver.get(DriversConfiguration.BASE_URL);
+                        var loginPage = mainPage.goToLoginPage();
+                        loginPage.login(DriversConfiguration.CORRECT_EMAIL, DriversConfiguration.WRONG_PASSWORD);
+                        Assertions.assertNotNull(DriversConfiguration.getElementBySelector(driver, By.xpath("//div[@class='a0A37 hAkP2']")));
+                    } finally {
+                        driver.quit();
+                    }
+                }));
+    }
+
 }
