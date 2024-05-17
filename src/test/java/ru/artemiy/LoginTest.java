@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 import org.openqa.selenium.By;
 import ru.artemiy.configuration.DriversConfiguration;
+import ru.artemiy.page.LoginPage;
 import ru.artemiy.page.MainPage;
 
 import java.util.stream.Stream;
@@ -27,7 +28,7 @@ public class LoginTest {
                         driver.manage().deleteAllCookies();
                         MainPage mainPage = new MainPage(driver);
                         driver.get(DriversConfiguration.BASE_URL);
-                        var loginPage = mainPage.goToLoginPage();
+                        LoginPage loginPage = mainPage.goToLoginPage();
                         loginPage.login(DriversConfiguration.CORRECT_EMAIL, DriversConfiguration.CORRECT_PASSWORD);
                     } finally {
                         driver.quit();
@@ -43,7 +44,7 @@ public class LoginTest {
                         driver.manage().deleteAllCookies();
                         MainPage mainPage = new MainPage(driver);
                         driver.get(DriversConfiguration.BASE_URL);
-                        var loginPage = mainPage.goToLoginPage();
+                        LoginPage loginPage = mainPage.goToLoginPage();
                         loginPage.login(DriversConfiguration.CORRECT_EMAIL, DriversConfiguration.WRONG_PASSWORD);
                         Assertions.assertNotNull(DriversConfiguration.getElementBySelector(driver, By.xpath("//div[@class='a0A37 hAkP2']")));
                     } finally {
