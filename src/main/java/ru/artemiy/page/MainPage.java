@@ -78,5 +78,24 @@ public class MainPage extends Page {
         }
     }
 
+    public void sendNewMessage(){
+        String TEST_MESSAGE = "TEST MESSAGE. SORRY";
+        DriversConfiguration.waitUntilPageLoads(driver, Duration.ofSeconds(10));
+        WebElement messageMainButton = DriversConfiguration.getElementBySelector(driver, By.xpath("/html/body/div[1]/div/div/div[2]/div/div[1]/div/div[1]/nav/ul/span[2]/span/li/button/span/div[2]"));
+        messageMainButton.click();
+        WebElement messageToTest = DriversConfiguration.getElementBySelector(driver, By.xpath("//span[@class='EvhBA leMd5']"));
+        messageToTest.click();
+        WebElement messageArea = DriversConfiguration.getElementBySelector(driver, By.xpath("//textarea"));
+        messageArea.click();
+        messageArea.sendKeys(TEST_MESSAGE);
+        WebElement sendButton = DriversConfiguration.getElementBySelector(driver, By.xpath("/html/body/div[1]/div/div/div[3]/div/div/div/div[2]/div/div[3]/div[2]/button[2]/span"));
+        sendButton.click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }
