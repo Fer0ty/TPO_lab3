@@ -1,5 +1,6 @@
 package ru.artemiy;
 
+import dev.failsafe.internal.util.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DynamicTest;
@@ -28,7 +29,7 @@ public class SendMessageTest {
                         LoginPage loginPage = mainPage.goToLoginPage();
                         loginPage.login(DriversConfiguration.CORRECT_EMAIL, DriversConfiguration.CORRECT_PASSWORD);
                         mainPage.sendNewMessage();
-                        Assertions.assertNotNull(DriversConfiguration.getElementBySelector(driver, By.xpath("/html/body/div[1]/div/div/div[3]/div/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div[2]")));
+                        Assertions.assertEquals(DriversConfiguration.getElementBySelector(driver, By.xpath("/html/body/div[1]/div/div/div[3]/div/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div[2]")).getText(), "TEST MESSAGE. SORRY");
                     } finally {
                         driver.quit();
                     }
