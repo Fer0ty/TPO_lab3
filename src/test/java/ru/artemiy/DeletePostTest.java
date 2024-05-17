@@ -30,7 +30,9 @@ public class DeletePostTest {
                         loginPage.login(DriversConfiguration.CORRECT_EMAIL, DriversConfiguration.CORRECT_PASSWORD);
                         mainPage.deletePost();
                         try {
+                            // Если пост не удалился, то мы получим его, для этого сравниваем с Null
                             Assertions.assertNull(DriversConfiguration.getElementBySelector(driver, By.xpath("/html/body/div[1]/div/div/div[2]/div/div[2]/div/div[1]/main/div[2]/div[2]/div[1]/div/div/div/article/div[1]/div/span/div/div/p")));
+                            // Когда Xpath не может найти элемент, он кидает ошибку. Для этого ее отлавливаем
                         } catch (TimeoutException e){
                             Assertions.assertNotNull("Test proyden");
                         }
