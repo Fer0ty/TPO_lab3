@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DriversConfiguration {
-    private static final String PROPERTIES_PATH = "/Users/artemiy/Desktop/ITMO/3rd_Year/2nd_sem/TPO/lab3/src/main/java/ru/artemiy/configuration/auto-testing.properties";
+    private static final String PROPERTIES_PATH = "/Users/artemiy/Desktop/ITMO/3rd_Year/2nd_sem/TPO/lab3/src/main/java/ru/artemiy/configuration/webdriver.properties";
     public static final String CHROME_SYSTEM_PROPERTY_NAME = "webdriver.chrome.driver";
     public static final String CHROME_SYSTEM_PROPERTY_PATH = "/Users/artemiy/Desktop/ITMO/3rd_Year/2nd_sem/TPO/lab3/src/main/java/ru/artemiy/configuration/chromedriver";
     public static final String FIREFOX_SYSTEM_PROPERTY_NAME = "webdriver.gecko.driver";
