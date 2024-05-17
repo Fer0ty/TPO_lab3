@@ -21,9 +21,9 @@ public class DriversConfiguration {
     public static final String CHROME_SYSTEM_PROPERTY_NAME = "webdriver.chrome.driver";
     public static final String CHROME_SYSTEM_PROPERTY_PATH = "/Users/artemiy/Desktop/ITMO/3rd_Year/2nd_sem/TPO/lab3/src/main/java/ru/artemiy/configuration/chromedriver";
     public static final String BASE_URL = "https://www.tumblr.com";
-    public static final String CORRECT_EMAIL = "***";
+    public static final String CORRECT_EMAIL = "***"; // забанили :(
     public static final String CORRECT_PASSWORD ="dyrpen-qaPhu2-gyvwes" ;
-//    public static final String WRONG_PASSWORD = "dyrpen-qaPhu2";
+    public static final String WRONG_PASSWORD = "dyrpen-qaPhu2";
 
 
     public static void prepareDrivers() {
