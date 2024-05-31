@@ -11,15 +11,16 @@ import ru.artemiy.page.MainPage;
 
 import java.util.stream.Stream;
 
-public class SendMessageTest {
+public class WriteNewPostTest {
     @BeforeAll
     static void prepareDrivers() {
         DriversConfiguration.prepareDrivers();
     }
 
+    // warning: Not Working :(
     @TestFactory
-    public Stream<DynamicTest> testSendMessage() {
-        return DriversConfiguration.getDrivers().stream().map(driver -> DynamicTest.dynamicTest("Удалить пост" + driver.getClass(),
+    public Stream<DynamicTest> testWriteNewPost() {
+        return DriversConfiguration.getDrivers().stream().map(driver -> DynamicTest.dynamicTest("Написать новый пост" + driver.getClass(),
                 () -> {
                     try {
                         driver.manage().deleteAllCookies();
@@ -27,8 +28,8 @@ public class SendMessageTest {
                         driver.get(DriversConfiguration.BASE_URL);
                         LoginPage loginPage = mainPage.goToLoginPage();
                         loginPage.login(DriversConfiguration.CORRECT_EMAIL, DriversConfiguration.CORRECT_PASSWORD);
-                        mainPage.sendNewMessage();
-                        Assertions.assertEquals(DriversConfiguration.getElementBySelector(driver, By.xpath("/html/body/div[1]/div/div/div[3]/div/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div[2]")).getText(), "TEST MESSAGE. SORRY");
+                        mainPage.writeNewPost();
+                        Assertions.assertNotNull(DriversConfiguration.getElementBySelector(driver, By.xpath("/html/body/div[1]/div/div/div[2]/div/div[2]/div/div[1]/main/div[2]/div[2]/div[1]/div/div/div/article/div[1]/div/span/div/div/p")));
                     } finally {
                         driver.quit();
                     }
